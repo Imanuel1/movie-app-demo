@@ -1,17 +1,20 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
-import x from 
+import './ActorCard.css'
 
 export default function ActorCard({actor}) {
     return (
-    <div className="col-md-4 col-sm-6 col-xs-12 c-actor-card">
-        <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
+    <div className="col-xl-3 col-lg-4 col-sm-6 col-xs-12 c-actor-card">
+        <Card style={{ width: '16rem'}}>
+            <Card.Img variant="top" src={actor.image} />
             <Card.Body>
-                <Card.Title>Card Title</Card.Title>
+                <Card.Title>
+                    <a href={actor.imdb} target="_blank">
+                        {`${actor["first-name"]} ${actor["last-name"]}`}
+                    </a>
+                </Card.Title>
                 <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
+                    {actor.age()}
                 </Card.Text>
             </Card.Body>
         </Card>
