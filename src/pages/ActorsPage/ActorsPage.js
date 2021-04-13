@@ -109,6 +109,7 @@ export default function ActorsPage() {
     function filter(e) {
         // setActors(actorsData.filter((actor) => actor["first-name"].toLowerCase().includes(e.target.value.toLowerCase())));
         setActors(actorsData.filter((actor) => new RegExp(e.target.value, 'i').test(actor["first-name"])));
+        
     }
 
     return (
