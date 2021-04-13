@@ -12,7 +12,7 @@ export default function ActorsPage() {
         return Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
     }
 
-    const actors= [{
+    const actorsData= [{
         "first-name": "Bard",
         "last-name": "Pitt",
         birthday: "1963-12-18",
@@ -102,14 +102,23 @@ export default function ActorsPage() {
         }
     }];
 
+    const [actors, setActors] = React.useState(actorsData);
+    const [filterBy, setfilterBy] = React.useState("first-name");
+
+
+    function filter(e) {
+        // setActors(actorsData.filter((actor) => actor["first-name"].toLowerCase().includes(e.target.value.toLowerCase())));
+        setActors(actorsData.filter((actor) => new RegExp(e.target.value, 'i').test(actor["first-name"])));
+    }
+
     return (
         <Container className="p-actors">
                 <Form.Row>
                     <Form.Group sm={10} as={Col} controlId="formGridCity">
-                        <Form.Control placeholder={`filter by ${10}`}/>
+                        <Form.Control placeholder={`filter by ${10}`} onChange={filter}/>
                     </Form.Group>
                     <Form.Group sm={2} as={Col} controlId="formGridState">
-                        <Form.Control as="select" defaultValue="Choose...">
+                        <Form.Control as="select" defaultValue="Choose..." >
                             <option>First Name</option>
                             <option>Last Name</option>
                             <option>Age</option>

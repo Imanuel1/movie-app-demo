@@ -14,17 +14,10 @@ export default function ActorCard({actor}) {
                     </a>
                 </Card.Title>
                 <Card.Text>
-                    {actor.age()}
+                    {actor.age}
                 </Card.Text>
             </Card.Body>
         </Card>
     </div>
-        // <div className="col-3">
-        //     <div className="img-parent">
-        //         <img src={actor.image} alt="card-image"/>
-        //     </div>
-        //     <h4>{actor["first-name"]} {actor["last-name"]}</h4>
-        //     <p>{actor.age}</p>
-        // </div>
     )
 }
