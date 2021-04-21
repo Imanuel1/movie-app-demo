@@ -89,8 +89,9 @@ export default function ActorsPage() {
 
     //1) filter the actors based on the filterText
     const filteredActors = actors.filter( actor =>
-        //case insensetive: option 1 - without Regex - ((actor) => actor["first-name"].toLowerCase().includes(e.target.value.toLowerCase()));
-        new RegExp(filterText, 'i').test(actor["fname"] || filterText, 'i').test(actor["lname"]));
+        //case insensetive: option 1 - without Regex - ((actor) => );
+        actor["fname"].toLowerCase().includes(filterText.toLowerCase()) ||
+        actor["lname"].toLowerCase().includes(filterText.toLowerCase()));
     
     //2) sort the actors array
     filteredActors.sort((actor1, actor2) => {
