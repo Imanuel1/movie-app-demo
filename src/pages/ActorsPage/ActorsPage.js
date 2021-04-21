@@ -1,8 +1,9 @@
 import axios from 'axios'
 import React from 'react'
-import { Col, Container, Form } from 'react-bootstrap'
+import { Col, Container, Form, Row } from 'react-bootstrap'
 import ActorCard from '../../components/ActorCard/ActorCard'
 import './ActorsPage.css'
+import ActorModel from '../../model/ActorModel'
 
 export default function ActorsPage() {
     //option 1 - to read data from array's object
@@ -83,35 +84,42 @@ export default function ActorsPage() {
 
 
     const [actors, setActors] = React.useState(actorsData);
-    const [filterBy, setfilterBy] = React.useState("fname");
+    const [filterText, setfilterText] = React.useState("");
+    const [sortBy, setSortBy] = React.useState("fname");
 
-
-    function filterChange(e) {
-        //case insensetive: option 1 - without Regex - setActors(actorsData.filter((actor) => actor["first-name"].toLowerCase().includes(e.target.value.toLowerCase())));
-        setActors(actorsData.filter((actor) => { 
-    console.log(actor[filterBy]);
-    console.log(e.target.value);
-    return new RegExp(e.target.value, 'i').test(actor["fname"]) || new RegExp(e.target.value, 'i').test(actor["lname"]);
-        }));
-    }
+    //1) filter the actors based on the filterText
+    const filteredActors = actors.filter( actor =>
+        //case insensetive: option 1 - without Regex - ((actor) => actor["first-name"].toLowerCase().includes(e.target.value.toLowerCase()));
+        new RegExp(e.target.value, 'i').test(actor["fname"] || e.target.value, 'i').test(actor["lname"]));
+    
+    //2) sort the actors array
+    filteredActors.sort((actor1, actor2) => {
+        if(actor1[sortBy] > actor2[sortBy]){
+            return 1;
+        } else if (actor1[sortBy] < actor2[sortBy]) {
+            return -1;
+        } else {
+            return 0;
+        }
+    });
 
     return (
         <Container className="p-actors">
                 <Form.Row>
                     <Form.Group sm={10} as={Col} controlId="formGridCity">
-                        <Form.Control placeholder={`filter by ${filterBy}`} onChange={filterChange}/>
+                        <Form.Control value={filterText} placeholder={`filter by actors`} onChange={(e) => setfilterText(e.target.value)}/>
                     </Form.Group>
                     <Form.Group sm={2} as={Col} controlId="formGridState">
-                        <Form.Control as="select" value={filterBy} onChange={e => setfilterBy(e.target.value)} >
+                        <Form.Control as="select" value={sortBy} onChange={e => setSortBy(e.target.value)} >
                             <option value="fname">First Name</option>
                             <option value="lname">Last Name</option>
                             <option value="age">Age</option>
                         </Form.Control>
                     </Form.Group>
                 </Form.Row>
-                <div className="row">
-                    {actors.map((actor, index) => <ActorCard key={index} actor={actors[index]}/>)}
-                </div>
+                <Row>
+                   {filteredActors.map((actor, index) => <Col><ActorCard key={index} actor={actor}/></Col>)}
+                </Row>
         </Container>
     )
 }
