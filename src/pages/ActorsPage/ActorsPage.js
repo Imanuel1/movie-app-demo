@@ -119,7 +119,7 @@ export default function ActorsPage() {
                     </Form.Group>
                 </Form.Row>
                 <Row>
-                   {filteredActors.map((actor, index) => <ActorCard key={index} actor={actor}/>)}
+                   {filteredActors.map((actor, index) => <Col><ActorCard key={index} actor={actor}/></Col>)}
                 </Row>
         </Container>
     )
