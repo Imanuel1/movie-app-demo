@@ -73,9 +73,11 @@ export default function ActorsPage() {
     
     // console.log(actorsData);
 
-    //fetch data from json only once the component is mounting 
+    //before mounting - fetch data from json only once the component is mounting 
     useEffect(() => {
-        axios.get("actor.json").then(response => {
+        console.log("actor,json");
+        const pathPre = process.env.PUBLIC_URL;
+        axios.get(pathPre.concat("/actor.json")).then(response => {
             console.log(response.data);
             setActors(response.data.map(plainActor => new ActorModel(plainActor)))
         }).catch(error => console.error(error));
