@@ -4,7 +4,7 @@ import './ActorCard.css'
 
 export default function ActorCard({actor}) {
     return (
-    <div className="col-lg-3 col-md-6 c-actor-card">
+    <div className="c-actor-card">
         <Card >
             <Card.Img variant="top" src={actor.img} />
             <Card.Body>

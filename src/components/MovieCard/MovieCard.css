@@ -1,0 +1,8 @@
+.c-movie-card .c-card{
+    flex-direction: row;
+}
+
+.c-movie-card .c-card .card-img-top{
+    width: 30%;
+    height: 50%;
+}

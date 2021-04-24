@@ -1,3 +1,7 @@
 .p-actors{
     margin-top: 20px;
 }
+
+.p-actors .movie-row{
+    margin-bottom: 100px;
+}
