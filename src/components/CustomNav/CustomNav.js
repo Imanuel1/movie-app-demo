@@ -5,10 +5,9 @@ import usePathname from "../../Hooks/usePathname"
 
 import './CustomNav.css'
 
-function CustomNav({link}) {
+function CustomNav() {
     const currentPath=usePathname();
     console.log(currentPath)
-
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Navbar.Brand href="#/">React-Bootstrap</Navbar.Brand>

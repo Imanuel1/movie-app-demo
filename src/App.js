@@ -10,17 +10,10 @@ import {useLocation} from "react-router-dom"
 
 
 function App() {
-
-  const [link, setLink] = useState("home");
-
- 
-
-
-
   return(
       <div className="App">
         <HashRouter>
-        <CustomNav active={link} />
+        <CustomNav/>
           <Switch>
             <Route exact path="/" >Hello Actors</Route>
             <Route exact path="/actors"><ActorsPage/></Route>
