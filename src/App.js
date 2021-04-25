@@ -6,7 +6,7 @@ import { HashRouter, Route, Switch } from 'react-router-dom';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import CustomNav from './components/CustomNav/CustomNav';
 import MoviesPage from './pages/MoviesPage/MoviesPage';
-import {useLocation} from "react-router-dom"
+import HomePage from './pages/HomePage/HomePage';
 
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
         <HashRouter>
         <CustomNav/>
           <Switch>
-            <Route exact path="/" >Hello Actors</Route>
+            <Route exact path="/"><HomePage/></Route>
             <Route exact path="/actors"><ActorsPage/></Route>
             <Route exact path="/movies"><MoviesPage/></Route>
             <Route path="/"><NotFoundPage/></Route>
