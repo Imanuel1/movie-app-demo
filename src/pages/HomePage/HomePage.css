@@ -1,9 +1,9 @@
 .p-home {
-    padding: 50px;
+    padding-top: 50px;
     text-align: center;
 }
 
 .p-home img{
-   width: 90vw;
+   width: 80vw;
    margin: 20px;
 }
