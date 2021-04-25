@@ -142,7 +142,7 @@ export default function ActorsPage() {
             setMovies(movies.concat(new MovieModel(results[index].title, MovieLength ,img,director,actor)));
         });
         axios.get("https://api.themoviedb.org/3/movie/"+movieId+"/images?api_key=09848168e2201726ba2c5e6a70d11ac7&language=en-US,null").then(response => {
-            img= response.data.posters[0].file_path?response.data.posters[0].file_path:response.data.backdrops[0].file_path;
+            img= response.data.posters[0]?response.data.posters[0].file_path:response.data.backdrops[0].file_path;
             console.log(img);
             console.log(response.data);
             setMovies(movies.concat(new MovieModel(results[index].title, MovieLength ,img,director,actor)));

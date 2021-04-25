@@ -4,7 +4,7 @@ export default class MovieModel {
         this.length = length + " minutes";
         this.img = img===""? "" : "https://image.tmdb.org/t/p/w500"+img;
         this.director = director.map(person => person.name +" ");
-        this.mainStars = mainStars.map(person => person.name + " ("+ person.character+") ");
+        this.mainStars = mainStars.map(person => person.character?person.name + " ("+ person.character+") " : person.name + " ");
     }
 }
 
